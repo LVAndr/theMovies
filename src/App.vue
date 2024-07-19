@@ -4,9 +4,16 @@
       <img src="../public/logo.svg" alt="logo" class="header-logo">
       <h2>My favorite Movies</h2>
     </header>
-    <div class="movies">
+    <div class="tabs">
+      <button :class="['btn', {'btn_green': moviesStore.activeTab === 1}]">Favorite</button>
+      <button :class="['btn', {'btn_green': moviesStore.activeTab === 2}]">Search</button>
+    </div>
+    <div class="movies" v-if="moviesStore.activeTab === 1">
       <h3>All movies</h3>
       <Movie v-for="movie of moviesStore.movies" :key="movie.id" :movie="movie"/>
+    </div>
+    <div class="search" v-else-if="moviesStore.activeTab === 2">
+      Search
     </div>
   </main>
 </template>
@@ -18,7 +25,7 @@ import Movie from "./components/Movie.vue";
 const moviesStore = useMovieStore();
 </script>
 
-<style scoped>
+<style>
 .header {
   display: flex;
   justify-content: center;

@@ -8,6 +8,13 @@
   <div>
     <div class="movie-name">{{movie.original_title}} {{movie.release_date}}</div>
     <span class="movie-overview">{{movie.overview}}</span>
+    <div class="movie-buttons">
+      <button class="btn movie-buttons-watched">
+        <span v-if="!movie.isWatched">Watched</span>
+        <span v-else>Unwatched</span>
+      </button>
+      <button class="btn movie-buttons-delete">Delete</button>
+    </div>
   </div>
 </div>
 </template>
@@ -36,7 +43,7 @@ const props = defineProps({
 }
 
 .movie:hover{
-  box-shadow: 0 4px 8px rgba(65, 65, 65, 0.2);
+  box-shadow: 0 2px 8px rgba(65, 65, 65, 0.2);
   transform: scale(1.01);
 }
 
