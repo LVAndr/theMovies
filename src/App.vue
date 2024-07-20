@@ -27,7 +27,7 @@
       <Movie v-for="movie of moviesStore.movies" :key="movie.id" :movie="movie"/>
     </div>
     <div class="search" v-else-if="moviesStore.activeTab === 2">
-      Search
+      <Search/>
     </div>
   </main>
 </template>
@@ -35,6 +35,7 @@
 <script setup>
 import {useMovieStore} from "./stores/MovieStore.js";
 import Movie from "./components/Movie.vue";
+import Search from "./components/Search.vue";
 const moviesStore = useMovieStore();
 
 const setTab = (id) => {

@@ -1,0 +1,32 @@
+<template>
+  <form @submit.prevent="searchStore.getMovies(searchMovie)">
+    <input
+        type="text"
+        class="search_input"
+        placeholder="Input movie"
+        v-model="searchMovie"
+    >
+  </form>
+</template>
+
+<script setup>
+import {ref} from "vue";
+import {useSearchStore} from "../stores/SearchStore.js";
+
+const searchStore = useSearchStore();
+
+const searchMovie = ref('')
+</script>
+
+<style scoped>
+.search_input{
+  font-family: inherit;
+  font-size: 16px;
+  border: 1px solid #e7e7e7;
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+</style>
