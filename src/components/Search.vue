@@ -7,11 +7,17 @@
         v-model="searchMovie"
     >
   </form>
+  <Loader v-if="searchStore.loader"/>
+  <div v-else>
+    <Movie v-for="movie of searchStore.movies" :key="movie.id" :movie="movie" :isSearch="true"/>
+  </div>
 </template>
 
 <script setup>
 import {ref} from "vue";
 import {useSearchStore} from "../stores/SearchStore.js";
+import Loader from "./Loader.vue";
+import Movie from "./Movie.vue";
 
 const searchStore = useSearchStore();
 

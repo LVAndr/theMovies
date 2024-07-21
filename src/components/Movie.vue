@@ -8,7 +8,7 @@
   <div>
     <div class="movie-name">{{movie.original_title}} {{movie.release_date}}</div>
     <span class="movie-overview">{{movie.overview}}</span>
-    <div class="movie-buttons">
+    <div class="movie-buttons" v-if="!isSearch">
       <button
           class="btn movie-buttons-watched"
           @click="movieStore.toggleWatched(movie.id)"
@@ -21,6 +21,13 @@
           @click="movieStore.deleteMovie(movie.id)"
       >
         Delete
+      </button>
+    </div>
+    <div class="movie-buttons" v-else>
+      <button
+          class="btn btn_green"
+      >
+        Add
       </button>
     </div>
   </div>
@@ -36,6 +43,11 @@ const props = defineProps({
     type: Object,
     required: true,
     default: ()=>{}
+  },
+  isSearch: {
+    type: Boolean,
+    required: false,
+    default: false
   }
 })
 </script>
